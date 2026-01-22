@@ -5,7 +5,7 @@ export default function SsoCallback() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/(tabs)"); // or "/" if you don’t use tabs
+    router.replace("/(tabs)"); 
   }, []);
 
   return null;
