@@ -12,7 +12,7 @@ export default function Index() {
           <View className="items-center">
             <Image
               source={require("../../assets/images/auth2.png")}
-              className="size-96"
+              className="size-100"
               resizeMode="contain"
             />
           </View>
