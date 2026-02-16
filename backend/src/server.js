@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
+import swaggerUi from "swagger-ui-express";
 
 import userRoutes from "./routes/user.route.js";
 import postRoutes from "./routes/post.route.js";
@@ -10,6 +11,7 @@ import notificationRoutes from "./routes/notification.route.js";
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 import { arcjetMiddleware } from "./middleware/arcjet.middleware.js";
+import { swaggerSpec } from "./config/swagger.js";
 
 const app = express();
 
@@ -18,6 +20,9 @@ app.use(express.json());
 
 app.use(clerkMiddleware());
 //app.use(arcjetMiddleware);
+
+app.get("/api/docs.json", (req, res) => res.json(swaggerSpec));
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get("/", (req, res) => res.send("Hello from server"));
 
@@ -38,7 +43,10 @@ const startServer = async () => {
 
     // listen for local development
     if (ENV.NODE_ENV !== "production") {
-      app.listen(ENV.PORT, () => console.log("Server is up and running on PORT:", ENV.PORT));
+      app.listen(ENV.PORT, () => {
+        console.log("Server is up and running on PORT:", ENV.PORT);
+        console.log(`Swagger docs: http://localhost:${ENV.PORT}/api/docs`);
+      });
     }
   } catch (error) {
     console.error("Failed to start server:", error.message);
