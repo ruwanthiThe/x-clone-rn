@@ -6,9 +6,13 @@ const swaggerSpec = {
     description: "API documentation for the JustSocial backend.",
   },
   servers: [
-    {
+     {
       url: "http://localhost:5001",
       description: "Local server",
+    },
+    {
+      url: 'https://app.justsocial.chat',
+      description: 'Dokploy server',
     },
   ],
   tags: [
