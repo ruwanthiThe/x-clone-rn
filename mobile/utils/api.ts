@@ -3,7 +3,7 @@ import { useAuth } from "@clerk/clerk-expo";
 
 //const API_BASE_URL =  process.env.EXPO_PUBLIC_API_URL ||"https://x-clone-rn-two-nu.vercel.app/api";
 // ! 🔥 localhost api would not work on your actual physical device
-const API_BASE_URL = "http://192.168.1.7:5001/api";
+const API_BASE_URL = "http://192.168.1.6:5001/api";
 
 // this will basically create an authenticated api, pass the token into our headers
 export const createApiClient = (getToken: () => Promise<string | null>): AxiosInstance => {
