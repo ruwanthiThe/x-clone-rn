@@ -9,7 +9,13 @@ export default function Index() {
       <View className="flex-1 px-8 justify-between">
         <View className="flex-1 justify-center">
           {/* DEMO IMAGE */}
-          <View className="items-center">
+          <View className="items-center pt-4">
+            <Text
+              className="text-center text-5xl font-semibold tracking-wide text-black mb-1"
+              style={{ transform: [{ translateY: -40 }] }}
+            >
+              JustSocial
+            </Text>
             <Image
               source={require("../../assets/images/auth2.png")}
               className="size-96"
